@@ -1,0 +1,112 @@
+@use 'sass:math';
+@import "../css/normalize";
+
+// swiper
+// @import "../css/library/swiper.min";
+
+@import "./abstacts/_mixin";
+@import "./abstacts/_variable";
+@import "./abstacts/media";
+
+@import './base/typography';
+@import './base/utilities';
+
+@import "./libries/_library-class";
+//@import "fonts"
+
+
+[class^="svg-svg"] {
+  object-fit: cover;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+	@include large-tablet {
+    font-size: 14px;
+	}
+	@include large-mobile {
+    font-size: 13px;
+	}
+  @include small-mobile{
+    font-size: 12px;
+  }
+}
+
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+input{
+  &:focus{
+    outline: none;
+  }
+}
+
+// блокировка скрола
+.scroll-block {
+  overflow: hidden;
+}
+
+// увелечение нажатия
+.touch-area{
+  position: relative;
+  &::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// прижимаем footer
+html, body{
+  height: 100%;
+}
+.wrapper{
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main{
+  flex-grow: 1;
+}
+
+// общие стили
+
+@import "./components/header";
+@import "./components/footer";

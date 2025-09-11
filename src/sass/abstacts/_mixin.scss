@@ -1,0 +1,79 @@
+@use 'sass:math';
+
+@mixin back-img ($path, $size, $extens){
+    background-image:
+         image-set(
+            url("#{$path}.avif") type("image/avif") 1x,
+            url("#{$path}.webp") type("image/webp") 1x,
+            url("#{$path}.#{$extens}") 1x,
+            url("#{$path}-2x.avif") type("image/avif") 2x,
+            url("#{$path}-2x.webp") type("image/webp") 2x,
+            url("#{$path}-2x.#{$extens}") 2x);
+    background-size: $size;
+    background-repeat: no-repeat;
+}
+    
+
+@mixin back-img-1x ($path, $size, $extens){
+    background-image: 
+        image-set( 
+            url("#{$path}.avif") type("image/avif") 1x, 
+            url("#{$path}.webp") type("image/webp") 1x, 
+            url("#{$path}.$extens") 1x);
+    background-size: $size;
+}
+    
+
+$maxWidth: 1920;
+$maxContainerWidth: 1270;
+
+@mixin adaptiv-value($property, $startSize, $minSize, $type){
+  $addSize: $startSize - $minSize;
+  @if $type == 1{
+    // уменньшает размеры при уменьшении контента
+    #{$property}: $startSize + px;
+
+    @media (max-width: #{$maxContainerWidth + px}){
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxContainerWidth - 320}));
+    }
+  } @else if $type == 2  {
+    // срабатывает когда ширина больше контейнера 
+    #{$property}: $startSize + px;
+    @media (min-width: #{$maxContainerWidth + px}){
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxWidth - 320}));
+    }
+  } @else {
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxWidth - 320}));
+  }
+}
+
+@mixin fluid-text($max: 48, $min: 16) {
+  $maxViewportWidth: 1270;
+  $minViewportWidth: 360;
+
+  $maxSize: math.div($max, 16);
+  $minSize: math.div($min, 16);
+  $maxWidth: math.div($maxViewportWidth, 16);
+  $minWidth: math.div($minViewportWidth, 16);
+
+  $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+  $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+  font-size: clamp(
+    #{$minSize * 16px},
+    #{$yAxisIntersection * 16px} + #{$slope * 100vw},
+    #{$maxSize * 16px}
+  );
+}
+// @include fluid-text(40, 28) - использование
+
+
+@function rem($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 13) + rem;
+  } @else {
+    @error 'Не используйте единицы измерения при работе с функцией rem()! Передавайте аргументом только числа.';
+  }
+}
+
+// rem(250)

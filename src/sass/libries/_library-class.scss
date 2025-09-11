@@ -1,0 +1,90 @@
+// accordion
+[data-acord-title] {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+[data-acord-body] {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin: 0;
+    padding: 0;
+}
+
+// modal
+[data-modal-wrapper] {
+    position: fixed;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dialog {
+    // указать ширину модального окна
+    max-width: 400px;
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+dialog[open] {
+    -webkit-animation: show 1s ease;
+}
+
+@-webkit-keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// tabs
+._disable-content-tabs {
+    display: none;
+}
+._active-content-tabs {
+    display: block;
+}
+
+// tooltips
+.tooltip{
+    position: relative;
+    display: inline-block;
+}
+.tooltip button {
+    cursor: pointer;
+}
+[role="tooltip"]{
+    position: absolute;
+    top: 30px;
+    background-color: rgba(11,11,39, 1);
+    opacity: .7;
+    z-index: 2;
+    color: white;
+    padding: 10px 5px;
+    transform: translateY(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+}
+.tooltip:hover [role="tooltip"],
+.tooltip button:focus-visible + [role="tooltip"]
+{
+    transform: translateY(0px);
+    opacity: .7;
+    visibility: visible;
+}
+[role="tooltip"]::after{
+    content: "";
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom: 10px solid rgba(11,11,39,1);
+    top: -18px;
+    left: 0;
+    z-index: 1;
+}

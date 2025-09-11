@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.min.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 
+            Пример подключения картинки (1.jpg / 1-2x.jpg / 1-3x.jpg)
+            <img data-src="@img/1.png" alt="">
+        -->
+
+		<!-- 
+            Пример использования data-атрибутов для подключения спойлера
+            <p data-acord-title >Заголовок</p>
+            <div data-acord-body > Тело </div>
+            _title-open - класс который добовляется открытому заголовку
+            _body-open  - класс который добовляется открытому контенту
+        -->
+        <!--  
+            Пример использования data-атрибутов для подключения модального окна
+            <div data-modal-inner="modal">
+                Контент
+                <button data-modal-close="modal">Кнопка закрытия</button>
+            </div>
+            <button data-modal-open="modal">Кнопка открытие</button>
+            !!! Важно кнопка открытия должна быть связана с оберткой контента одинаковым содержанием data атрибутов !!!
+        -->
+
+        <!-- 
+            Пример использования data-атрибутов для подключения табов
+            <ul data-button-tabs="one">
+                <li>
+                    <button>Кнопка1</button>
+                </li>
+                <li>
+                    <button>Кнопка2</button>
+                </li>
+                <li>
+                    <button>Кнопка3</button>
+                </li>
+            </ul>
+
+            <ul data-content-tabs="one">
+                <li class="_disable-content-tabs _active-content-tabs">Контент</li>
+                <li class="_disable-content-tabs">Контент</li>
+                <li class="_disable-content-tabs">Контент</li>
+            </ul>
+            !!! Важно обертка кнопок и обертка контента должны быть связаны одинаковым содержанием data атрибутов !!!
+        -->
+
+        <!-- 
+        Тултипы (id уникальное)
+            <div class="tooltip">
+                <button aria-describedby="tooltip-1">Тултип</button>
+                <div role="tooltip" id="tooltip-1"> текст тултипа</div>
+            </div>
+        -->
+		<script src="../js/dist/app.min.js"></script>
+	</body>
+</html>
