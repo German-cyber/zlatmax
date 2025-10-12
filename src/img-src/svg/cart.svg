@@ -1,0 +1,22 @@
+<svg viewBox="0 0 39.4634 40.5762" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="39.463379" height="40.576202" fill="none" customFrame="#000000">
+	<defs>
+		<g id="pixso_custom_effect_0">
+			<effect x="0.000000" y="4.000000" visibility="visible" fill="rgb(0,0,0)" fill-opacity="0.25" effectType="dropShadow" stdDeviation="4" radius="0" />
+		</g>
+		<filter id="filter_0" width="39.463379" height="40.576202" x="0.000000" y="0.000000" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_0)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feColorMatrix result="hardAlpha" in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0 " />
+			<feOffset dx="0.000000" dy="4.000000" in="hardAlpha" />
+			<feGaussianBlur stdDeviation="1.33333337" />
+			<feComposite k2="-1" k3="1" in2="hardAlpha" operator="out" />
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0 " />
+			<feBlend result="effect_dropShadow_1" in2="BackgroundImageFix" mode="normal" />
+			<feBlend result="shape" in="SourceGraphic" in2="effect_dropShadow_1" mode="normal" />
+		</filter>
+	</defs>
+	<g id="Group 2" filter="url(#filter_0)">
+		<path id="Vector 1" d="M11.1301 7.01925L33.7121 7.01925C34.3649 7.01925 34.8427 7.63454 34.681 8.26697L32.7801 15.701C32.4405 17.0289 31.2442 17.9578 29.8736 17.9578L13.0254 17.9578M4 0.75L8.65214 0.75C9.63535 0.75 10.4727 1.46465 10.6273 2.43564L13.6467 21.4066C13.8012 22.3776 14.6386 23.0923 15.6218 23.0923L32.203 23.0923" stroke="rgb(0,0,0)" stroke-width="1.5" />
+		<ellipse id="Ellipse 1" rx="2.199402" ry="2.310196" cx="17.569519" cy="29.515976" stroke="rgb(0,0,0)" stroke-width="1.5" />
+		<ellipse id="Ellipse 2" rx="2.199402" ry="2.310196" cx="30.5465698" cy="29.515976" stroke="rgb(0,0,0)" stroke-width="1.5" />
+	</g>
+</svg>

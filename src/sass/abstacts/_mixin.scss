@@ -25,27 +25,97 @@
     
 
 $maxWidth: 1920;
-$maxContainerWidth: 1270;
+$maxContainerWidth: 1590;
+$minWidth: 320;
+$containerWidth: $maxContainerWidth + 30;
 
-@mixin adaptiv-value($property, $startSize, $minSize, $type){
-  $addSize: $startSize - $minSize;
-  @if $type == 1{
-    // уменньшает размеры при уменьшении контента
-    #{$property}: $startSize + px;
+// @mixin adaptiv-value($property, $startSize, $minSize, $type){
+//   $addSize: $startSize - $minSize;
+//   @if $type == 1{
+//     // уменньшает размеры при уменьшении контента
+//     #{$property}: $startSize + px;
 
-    @media (max-width: #{$maxContainerWidth + px}){
-      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxContainerWidth - 320}));
-    }
-  } @else if $type == 2  {
-    // срабатывает когда ширина больше контейнера 
-    #{$property}: $startSize + px;
-    @media (min-width: #{$maxContainerWidth + px}){
-      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxWidth - 320}));
-    }
-  } @else {
-    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxWidth - 320}));
-  }
+//     @media (max-width: #{$maxContainerWidth + px}){
+//       #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxContainerWidth - 320}));
+//     }
+//   } @else if $type == 2  {
+//     // срабатывает когда ширина больше контейнера 
+//     #{$property}: $startSize + px;
+//     @media (min-width: #{$maxContainerWidth + px}){
+//       #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxWidth - 320}));
+//     }
+//   } @else {
+//     #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxWidth - 320}));
+//   }
+// }
+
+@function em($px, $current: 16) {
+	$result: math.div($px, $current) + em;
+	@return $result;
 }
+
+// Адаптивное свойство (clamp) 
+// widthFrom - размер с которого начинаем 
+// widthTo - до какого должно быть использованно
+@mixin adaptiv-value($property, $startSize, $minSize, $widthFrom: $maxContainerWidth, $widthTo: $minWidth, $keepSize: 0) {
+	@if ($startSize==0) {
+		$startSize: 0.000001;
+	}
+	@if ($minSize==0) {
+		$minSize: 0.000001;
+	}
+
+	// Для calc();
+	$addSize: math.div($startSize - $minSize, 16);
+
+	@if ($widthFrom == $containerWidth and $maxContainerWidth == 0) {
+		$widthFrom: $maxWidth;
+	}
+
+	// Брейк-поинты в EM
+	$widthFromMedia: em($widthFrom);
+	$widthToMedia: em($widthTo);
+
+	// Формула плавающего значения
+	// Источник: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+	$slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+	$yIntersection: -$widthTo * $slope + $minSize;
+	@if ($yIntersection==0) {
+		$yIntersection: 0.000001;
+	}
+	$flyValue: #{rem($yIntersection)}" + " #{$slope * 100}vw;
+
+	// Получение значения свойства
+	$propertyValue: #{"clamp(" rem($minSize) "," $flyValue "," rem($startSize) ")"};
+	// Если отрицательные значения
+	@if ($minSize > $startSize) {
+		$propertyValue: #{"clamp(" rem($startSize) "," $flyValue "," rem($minSize) ")"};
+	}
+
+	// Устанавливаем значения по умолчанию
+	@if $keepSize != 1 and $keepSize != 3 {
+		@media (min-width: $widthFromMedia) {
+			#{$property}: rem($startSize);
+		}
+	}
+	// Адаптируем размер в промежутке между указанными ширинами вьюпорта
+	@media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+		// Если поддерживается clamp();
+		@supports (#{$property}: $propertyValue) {
+			#{$property}: $propertyValue;
+		}
+		// Если не поддерживается clamp();
+		@supports not (#{$property}: $propertyValue) {
+			#{$property}: calc(#{rem($minSize)} + #{$addSize} * (100vw - #{rem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)});
+		}
+	}
+	@if $keepSize != 1 and $keepSize != 2 {
+		@media (max-width: $widthToMedia) {
+			#{$property}: rem($minSize);
+		}
+	}
+}
+
 
 @mixin fluid-text($max: 48, $min: 16) {
   $maxViewportWidth: 1270;
@@ -70,7 +140,7 @@ $maxContainerWidth: 1270;
 
 @function rem($pixel) {
   @if math.is-unitless($pixel) {
-    @return math.div($pixel, 13) + rem;
+    @return math.div($pixel, 16) + rem;
   } @else {
     @error 'Не используйте единицы измерения при работе с функцией rem()! Передавайте аргументом только числа.';
   }

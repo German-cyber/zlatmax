@@ -23,6 +23,8 @@ export async function sass() {
         
     .pipe(app.plugins.replace(/@img\//g, '../img/')) // замена путей к картинке
 
+    .pipe(app.plugins.replace(/@svg\//g, '../img-src/svg/')) // замена путей к картинке
+
     // если есть 2 и более медиа запроса на одинаковую ширину, он их обьеденит (только в продакшене)
     .pipe(
         app.plugins.if(

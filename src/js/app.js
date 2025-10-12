@@ -7,7 +7,12 @@ import * as tabsWidget from "./modules/functionalTabs.js"
 imagesFunction.imagesWrapper() // обертака над картинками
 spoilerWidget.spoiler() // подключение спойлера по data - атрибутам
 modalWidget.modal() // подключение модального окна по data - атрибутам
-tabsWidget.tabs() // подключение табов по data - атрибутам
+tabsWidget.tabs() // подключение табов по data - атрибутам\
+
+// динамический адоптив
+import "./library/dynamic_adapt.js";
 
 // swiper
 // import "./library/swiper.min"
+
+import "./script/header.js";

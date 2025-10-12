@@ -1,8 +1,13 @@
 @use 'sass:math';
 @import "../css/normalize";
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 // swiper
 // @import "../css/library/swiper.min";
+
+@import "../../node_modules/tippy.js/dist/tippy";
+
 
 @import "./abstacts/_mixin";
 @import "./abstacts/_variable";
@@ -22,14 +27,15 @@
 html {
   box-sizing: border-box;
   font-size: 16px;
+  scrollbar-gutter: stable;
 	@include large-tablet {
-    font-size: 14px;
+    font-size: 15px;
 	}
 	@include large-mobile {
-    font-size: 13px;
+    font-size: 14px;
 	}
   @include small-mobile{
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
@@ -48,6 +54,7 @@ a {
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 img {
@@ -59,6 +66,7 @@ button {
   background-color: transparent;
   border: none;
   font-family: inherit;
+  padding: 0;
   cursor: pointer;
   &:focus {
     outline: none;
@@ -66,6 +74,8 @@ button {
 }
 
 input{
+  border: none;
+  background: transparent;
   &:focus{
     outline: none;
   }
@@ -86,7 +96,7 @@ input{
     width: 100%;
     height: 100%;
     box-sizing: content-box;
-    padding: 10px;
+    padding: rem(12);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -96,6 +106,7 @@ input{
 // прижимаем footer
 html, body{
   height: 100%;
+  scrollbar-gutter: stable;
 }
 .wrapper{
   min-height: 100%;
@@ -104,6 +115,20 @@ html, body{
 }
 .main{
   flex-grow: 1;
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
+  font-size: rem(18);
+  line-height: 1.5;
+  font-weight: 500;
+  color: black;
+}
+
+.container{
+  padding: 0 rem(15);
+  max-width: rem(1620);
+  margin: 0 auto;
 }
 
 // общие стили

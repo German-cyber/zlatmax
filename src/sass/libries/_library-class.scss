@@ -14,12 +14,15 @@
 }
 
 // modal
+dialog { border: none !important; }
 [data-modal-wrapper] {
     position: fixed;
     margin: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: none;
+    outline: none;
 }
 
 .dialog {
@@ -62,11 +65,10 @@ dialog[open] {
 [role="tooltip"]{
     position: absolute;
     top: 30px;
-    background-color: rgba(11,11,39, 1);
-    opacity: .7;
+    background-color: #494949;
     z-index: 2;
     color: white;
-    padding: 10px 5px;
+    padding: rem(10) rem(8);
     transform: translateY(5px);
     opacity: 0;
     visibility: hidden;
@@ -76,15 +78,15 @@ dialog[open] {
 .tooltip button:focus-visible + [role="tooltip"]
 {
     transform: translateY(0px);
-    opacity: .7;
+    opacity: .9;
     visibility: visible;
 }
 [role="tooltip"]::after{
     content: "";
     position: absolute;
-    border: 10px solid transparent;
-    border-bottom: 10px solid rgba(11,11,39,1);
-    top: -18px;
+    border: rem(10) solid transparent;
+    border-bottom: rem(10) solid #494949;
+    top: rem(-18);
     left: 0;
     z-index: 1;
 }

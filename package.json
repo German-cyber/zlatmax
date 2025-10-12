@@ -44,5 +44,9 @@
     "webp-converter": "2.2.3",
     "webpack": "^5.93.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "mixitup": "^3.3.2",
+    "tippy.js": "^6.3.7"
   }
 }

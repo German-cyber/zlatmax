@@ -19,6 +19,9 @@ export const html = () => {
       // заменяем @img на путь
       .pipe(app.plugins.replace(/@img\//g, "img/"))
 
+      // заменяем @svg на путь
+      .pipe(app.plugins.replace(/@svg\//g, "img-src/svg/"))
+
       // в продакшене изменяем путь файл
       .pipe(app.plugins.if(app.isBuild, app.plugins.replace('/dist', "") ))
 
