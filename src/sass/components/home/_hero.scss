@@ -1,0 +1,266 @@
+.hero{
+    background-color: rgba(20, 20, 20, 1);
+    @include back-img-1x("@img/hero/bg", cover, "png");
+    @include adaptiv-value("padding-top", 40, 20);
+    @include adaptiv-value("padding-bottom", 60, 20);
+    .container{
+        max-width: rem(1800);
+        @include adaptiv-value("padding-left", 103, 15, 1800, 1620);
+    }
+}
+
+.slide-hero{
+    display: grid;
+    grid-template-columns: 1fr percent(635, 1600);
+    opacity: 0 !important;
+    pointer-events: none;
+    // transition: none !important;
+}
+.slide-hero.swiper-slide-visible{
+    opacity: 1 !important;
+    pointer-events: auto;
+}
+
+.slide-hero__title{
+    line-height: math.div(46, 36);
+    @include fluid-text(36, 30);
+    color: white;
+    font-weight: 700;
+    span {
+        display: block;
+        margin-top: rem(15);
+        font-weight: 500;
+    }
+}
+
+.slide-hero__text{
+    font-size: rem(20);
+    line-height: math.div(30, 20);
+    color: rgba($color: white, $alpha: .7);
+    @include adaptiv-value("padding-top", 30, 20);
+    @include adaptiv-value("padding-bottom", 50, 20);
+}
+
+.slide-hero__button{
+    font-size: rem(20);
+    font-weight: 600;
+    line-height: math.div(32, 20);
+    padding: rem(15) rem(50);
+}
+
+.media-hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: rem(15);
+    position: relative;
+}
+
+.slide-hero__media{
+    //@include adaptiv-value("padding-right", 54, 15, 1800, 1600);
+    padding-right: rem(54);
+}
+
+.media-hero__img{
+    max-width: 85%;
+    position: relative;
+    z-index: 2;
+    &--2{
+        max-width: 65%;
+        transform: translateX(rem(160));
+    }
+    &--3{
+        max-width: 75%;
+        transform: translateX(rem(25));
+    }
+}
+
+picture:has(.media-hero__img){
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        bottom: 5%;
+        right: 0;
+        @include adaptiv-value("width", 423, 200);
+        @include adaptiv-value("height", 423, 200);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        transform: translate(10%, 0px);
+    }
+}
+
+.media-hero__tip{
+    position: absolute;
+    button{
+        width: rem(20);
+        height: rem(20);
+        position: relative;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 3;
+        &::before, &::after{
+            content: "";
+            background-color: $color-gold;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        &::after{
+            transform: scale(1.6);
+            opacity: .5;
+        }
+        span{
+            color: white;
+            font-weight: 600;
+            font-size: rem(20);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transition: transform .3s  ease;
+        }
+    }
+
+    &--1{
+        top: percent(176, 500);
+        left: percent(72, 447);
+    }
+
+    &--2{
+        top: 22%;
+        right: 21%;
+        left: auto;
+    }
+    &--3{
+        top: auto;
+        right: 28%;
+        bottom: 21%;
+        left: auto;
+    }
+
+    @media (hover:hover) {
+        &:hover{
+            span{
+                transform: rotate(90deg);
+            }
+        }
+    }
+}
+
+.media-hero-tooltip{
+    border-radius: rem(10);
+    font-size: rem(14);
+    line-height: 1.1;
+    top: rem(31);
+    left: rem(-25);
+    background-color: #1B2121;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    &::after{
+        left: rem(27);
+        border-bottom: rem(10) solid #1B2121;
+    }
+}
+
+.hero-swiper{
+    position: relative;
+}
+
+.hero-swiper-pagination{
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    @include adaptiv-value("bottom", 150, 0, 1700, 1285, 2);
+    @media (max-width:1285px) {
+        position: static;
+        margin-top: rem(25);
+    }
+}
+
+.hero-swiper-pagination__bullet {
+    display: flex;
+    align-items: center;
+    gap: rem(5);
+    position: static;
+    padding: 10px 0;
+    width: auto !important;
+    .swiper-pagination-bullet{
+        width: rem(18);
+        height: 2px;
+        background-color: white;
+        border-radius: 0;
+        opacity: 1;
+        position: relative;
+        transition: all .3s ease;
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: content-box;
+            padding: rem(12);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            width: rem(10);
+            height: rem(10);
+            background-color: $color-gold;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            border-radius: 50%;
+            opacity: 0;
+        }
+    }
+    .swiper-pagination-bullet-active{
+        background-color: $color-gold;
+        width: rem(30);
+        &::after{
+            content: "";
+            opacity: 1;
+            position: absolute;
+            width: rem(10);
+            height: rem(10);
+            background-color: $color-gold;
+            top: 50%;
+            left: 25px;
+            transform: translate(0, -50%);
+            // отвечает за скорость перемещения и равен значению delay
+            transition: left 3.5s linear;
+            border-radius: 50%;
+        }
+    }
+}
+
+.hero-swiper-pagination__fraction{
+    margin-left: rem(25);
+}
+
+.fraction-hero {
+    color: white;
+    font-weight: 600;
+}
+
+.fraction-hero__current{
+    font-size: rem(24);
+    line-height: math.div(40, 24);
+    color: $color-gold;
+}
+
+.fraction-hero__all{
+    font-size: rem(18);
+    line-height: math.div(40, 18);
+}

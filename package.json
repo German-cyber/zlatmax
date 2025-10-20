@@ -47,6 +47,6 @@
   },
   "dependencies": {
     "mixitup": "^3.3.2",
-    "tippy.js": "^6.3.7"
+    "swiper": "^12.0.2"
   }
 }

@@ -15,4 +15,8 @@ import "./library/dynamic_adapt.js";
 // swiper
 // import "./library/swiper.min"
 
+// шапка
 import "./script/header.js";
+
+// слайдер на главной (hero)
+import "./script/hero-swiper.js"

@@ -706,6 +706,7 @@
 	background-color: $color-dark;
 	opacity: 0;
 	pointer-events: none;
+	z-index: 2;
 	@include large-tablet{
 		position: static;
 	}

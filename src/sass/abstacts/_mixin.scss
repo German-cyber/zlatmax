@@ -19,40 +19,25 @@
         image-set( 
             url("#{$path}.avif") type("image/avif") 1x, 
             url("#{$path}.webp") type("image/webp") 1x, 
-            url("#{$path}.$extens") 1x);
+            url("#{$path}.#{$extens}") 1x);
     background-size: $size;
 }
-    
+   
+@function em($px, $current: 16) {
+	$result: math.div($px, $current) + em;
+	@return $result;
+}
+
+//Percent
+@function percent($px, $from) {
+	$result: math.div($px, $from) * 100%;
+	@return $result;
+}
 
 $maxWidth: 1920;
 $maxContainerWidth: 1590;
 $minWidth: 320;
 $containerWidth: $maxContainerWidth + 30;
-
-// @mixin adaptiv-value($property, $startSize, $minSize, $type){
-//   $addSize: $startSize - $minSize;
-//   @if $type == 1{
-//     // уменньшает размеры при уменьшении контента
-//     #{$property}: $startSize + px;
-
-//     @media (max-width: #{$maxContainerWidth + px}){
-//       #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxContainerWidth - 320}));
-//     }
-//   } @else if $type == 2  {
-//     // срабатывает когда ширина больше контейнера 
-//     #{$property}: $startSize + px;
-//     @media (min-width: #{$maxContainerWidth + px}){
-//       #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxWidth - 320}));
-//     }
-//   } @else {
-//     #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px)/ #{$maxWidth - 320}));
-//   }
-// }
-
-@function em($px, $current: 16) {
-	$result: math.div($px, $current) + em;
-	@return $result;
-}
 
 // Адаптивное свойство (clamp) 
 // widthFrom - размер с которого начинаем 
