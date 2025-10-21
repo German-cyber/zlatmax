@@ -1,5 +1,5 @@
 section.hero.hero-main-page 
-    .container 
+    .container.container-big-hero
         .hero__slider 
             <div class="swiper hero-swiper">
                 <div class="swiper-wrapper">
@@ -7,52 +7,68 @@ section.hero.hero-main-page
                         .slide-hero__content
                             h2.slide-hero__title(data-swiper-parallax="-600") Интернет магазин сертифицированных #[span златоустовских ножей]
                             p.slide-hero__text(data-swiper-parallax="-400") Добро пожаловать на официальный сайт «ЗЛАТМАКС»! В нашем магазине представлен наиболее широкий выбор Златоустовских ножей от Златоустовских Оружейных Фабрик и компаний, мы являемся официальными поставщиками.
-                            a.slide-hero__button.gold-btn(data-swiper-parallax="-200") Подробнее
-                        .slide-hero__media.media-hero
-                            picture 
-                              source(type="image/avif" srcset="@img/hero/hero-slider-1.avif")
-                              source(type="image/webp" srcset="@img/hero/hero-slider-1.webp")
-                              img(src="@img/hero/hero-slider-1.jpg").media-hero__img
-                            .media-hero__tip.tooltip.media-hero__tip--1
-                                button(aria-describedby="hero-tooltip-1") #[span +] 
-                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-1">Максимальная острота</p>
-                            .media-hero__tip.tooltip.media-hero__tip--2 
-                                button(aria-describedby="hero-tooltip-2") #[span +] 
-                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-2">Максимальная острота</p>
-                            .media-hero__tip.tooltip.media-hero__tip--3 
-                                button(aria-describedby="hero-tooltip-3") #[span +] 
-                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-3">Современный дизайн</p>
+                            a.slide-hero__button.gold-btn(data-swiper-parallax="-200") Подробнее  
                     </div>
                     <div class="swiper-slide slide-hero">
                         .slide-hero__content
                             h2.slide-hero__title(data-swiper-parallax="-600") Быстрая доставка по России #[span и за ее пределами]
                             p.slide-hero__text(data-swiper-parallax="-400") Мы гордимся нашей собственной службой доставки, которая позволяет нам обеспечивать максимальную надежность и высокую скорость прибытия товаров нашим клиентам. Наши опытные курьеры оперативно доставляют заказы прямо до двери заказчика, гарантируя своевременность и безопасность каждой посылки
                             a.slide-hero__button.gold-btn(data-swiper-parallax="-200") Подробнее
-                        .slide-hero__media.media-hero
-                            picture 
-                              source(type="image/avif" srcset="@img/hero/hero-slider-3.avif")
-                              source(type="image/webp" srcset="@img/hero/hero-slider-3.webp")
-                              img(src="@img/hero/hero-slider-3.jpg").media-hero__img.media-hero__img--2
-                            .media-hero__tip.tooltip.media-hero__tip--1
-                                button(aria-describedby="hero-tooltip-1") #[span +] 
-                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-1">Максимальная острота</p>
-                            .media-hero__tip.tooltip.media-hero__tip--2 
-                                button(aria-describedby="hero-tooltip-2") #[span +] 
-                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-2">Максимальная острота</p>
-                            .media-hero__tip.tooltip.media-hero__tip--3 
-                                button(aria-describedby="hero-tooltip-3") #[span +] 
-                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-3">Современный дизайн</p>
                     </div>
                     <div class="swiper-slide slide-hero">
                         .slide-hero__content
                             h2.slide-hero__title(data-swiper-parallax="-600") Надёжность вашего выбора: гарантия #[span на каждый нож!]
                             p.slide-hero__text(data-swiper-parallax="-400") Приобретая ножи в нашем интернет-магазине, вы получаете не только качественный продукт, но и надёжную гарантию производителя. Все товары проходят тщательную проверку на соответствие высоким стандартам качества. Вы можете быть уверены, что ваш нож прослужит долго и станет верным помощником в повседневной жизни или экстремальных условиях
                             a.slide-hero__button.gold-btn(data-swiper-parallax="-200") Подробнее
+                    </div>
+                </div>
+                <div class="hero-swiper-pagination">
+                    .hero-swiper-pagination__bullet.swiper-pagination
+                    .hero-swiper-pagination__fraction.fraction-hero 
+                        <span class="fraction-hero__current">01</span> / <span class="fraction-hero__all">0</span>
+                </div>
+            </div>
+
+            <div class="swiper hero-media-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide hero-media-swiper__slide">
                         .slide-hero__media.media-hero
                             picture 
-                              source(type="image/avif" srcset="@img/hero/hero-slider-2.avif")
-                              source(type="image/webp" srcset="@img/hero/hero-slider-2.webp")
-                              img(src="@img/hero/hero-slider-2.jpg").media-hero__img.media-hero__img--3
+                                source(type="image/avif" srcset="@img/hero/hero-slider-1.avif")
+                                source(type="image/webp" srcset="@img/hero/hero-slider-1.webp")
+                                img(src="@img/hero/hero-slider-1.jpg").media-hero__img
+                            .media-hero__tip.tooltip.media-hero__tip--1
+                                button(aria-describedby="hero-tooltip-1") #[span +] 
+                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-1">Максимальная острота</p>
+                            .media-hero__tip.tooltip.media-hero__tip--2 
+                                button(aria-describedby="hero-tooltip-2") #[span +] 
+                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-2">Максимальная острота</p>
+                            .media-hero__tip.tooltip.media-hero__tip--3 
+                                button(aria-describedby="hero-tooltip-3") #[span +] 
+                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-3">Современный дизайн</p>
+                    </div>
+                    <div class="swiper-slide hero-media-swiper__slide">
+                        .slide-hero__media.media-hero
+                            picture 
+                                source(type="image/avif" srcset="@img/hero/hero-slider-3.avif")
+                                source(type="image/webp" srcset="@img/hero/hero-slider-3.webp")
+                                img(src="@img/hero/hero-slider-3.jpg").media-hero__img.media-hero__img--2
+                            .media-hero__tip.tooltip.media-hero__tip--1
+                                button(aria-describedby="hero-tooltip-1") #[span +] 
+                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-1">Максимальная острота</p>
+                            .media-hero__tip.tooltip.media-hero__tip--2 
+                                button(aria-describedby="hero-tooltip-2") #[span +] 
+                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-2">Максимальная острота</p>
+                            .media-hero__tip.tooltip.media-hero__tip--3 
+                                button(aria-describedby="hero-tooltip-3") #[span +] 
+                                <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-3">Современный дизайн</p>
+                    </div>
+                    <div class="swiper-slide hero-media-swiper__slide">
+                        .slide-hero__media.media-hero
+                            picture 
+                                source(type="image/avif" srcset="@img/hero/hero-slider-2.avif")
+                                source(type="image/webp" srcset="@img/hero/hero-slider-2.webp")
+                                img(src="@img/hero/hero-slider-2.jpg").media-hero__img.media-hero__img--3
                             .media-hero__tip.tooltip.media-hero__tip--1
                                 button(aria-describedby="hero-tooltip-1") #[span +] 
                                 <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-1">Максимальная острота</p>
@@ -64,15 +80,22 @@ section.hero.hero-main-page
                                 <p role="tooltip" class="media-hero-tooltip" id="hero-tooltip-3">Современный дизайн</p>
                     </div>
                 </div>
-
-                <div class="hero-swiper-pagination">
-                    .hero-swiper-pagination__bullet.swiper-pagination
-                    .hero-swiper-pagination__fraction.fraction-hero 
-                        <span class="fraction-hero__current">01</span> / <span class="fraction-hero__all">0</span>
-                </div>
-
             </div>
-        .hero__advantages.advantages-hero
-            .advantages-hero__icon
-                img(src="../../img/hero/advant-1.png", alt="")
-            p.advantages-hero__text Гарантия 100% возврата денежных средств
+    .container
+        ul.hero__advantages.advantages-hero
+            li.advantages-hero__item
+                .advantages-hero__icon
+                    img(src="../../img/hero/advant-1.svg" alt="")
+                p.advantages-hero__text Гарантия 100% возврата денежных средств
+            li.advantages-hero__item
+                .advantages-hero__icon
+                    img(src="../../img/hero/advant-2.svg" alt="")
+                p.advantages-hero__text Доставка по России, Казахстану и Белоруссии
+            li.advantages-hero__item
+                .advantages-hero__icon
+                    img(src="../../img/hero/advant-3.svg" alt="")
+                p.advantages-hero__text Возможность оформление заказа без регистрации.
+            li.advantages-hero__item
+                .advantages-hero__icon
+                    img(src="../../img/hero/advant-4.svg" alt="")
+                p.advantages-hero__text Скидки постоянным покупателям. 

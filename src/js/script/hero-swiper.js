@@ -3,6 +3,7 @@ import { plagins } from "../modules/plugins.js";
 if(document.querySelector(".hero-main-page")){
     const swiper = new plagins.swiper('.hero-swiper', {
         slidesPerView: 1,
+        spaceBetween: 20,
         effect: "fade",
         allowTouchMove: false,
         parallax: true,
@@ -28,4 +29,19 @@ if(document.querySelector(".hero-main-page")){
             }
         }
     });
+
+    const swiperMedia = new plagins.swiper('.hero-media-swiper',{
+        slidesPerView: 1,
+        spaceBetween: 20,
+        effect: "fade",
+        pagination: {
+            el: ".hero-swiper-pagination__bullet.swiper-pagination",
+            clickable: true,
+        },
+        allowTouchMove: false,
+        // autoplay: {
+        //     delay: 3500,
+        //     disableOnInteraction: false,
+        // },
+    })
 }

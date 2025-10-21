@@ -132,6 +132,11 @@ body{
   margin: 0 auto;
 }
 
+.container-big-hero{
+  max-width: rem(1800);
+  @include adaptiv-value('padding-left', 103, 15, 1800, 1620);
+}
+
 // общие стили
 
 @import "./components/header";
