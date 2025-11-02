@@ -1,3 +1,8 @@
+//- миксин слайдера
+include ../components/product-slider.pug
+//- миксин карточки товара
+include ../components/product-card.pug
+
 doctype html
 html(lang="ru")
     head
@@ -10,8 +15,26 @@ html(lang="ru")
             include ../components/header.pug  
             .main
                 include ../components/home/hero.pug 
+                include ../components/home/section-rubric.pug 
+                section.product-slider.product-slider-four-slide
+                    .container
+                        .product-slider__header 
+                            h2.product-slider__title.h2-title Хиты продаж
+                            a(href="#").product-slider__more Перейти в каталог
+                        +product-slider
+                include ../components/home/section-news.pug
+                section.product-slider.product-slider-four-slide.padding-section
+                    .container
+                        .product-slider__header 
+                            h2.product-slider__title.h2-title Акции
+                            a(href="#").product-slider__more Перейти в каталог
+                        +product-slider
+                include ../components/article-module.pug
+                include ../components/home/section-flashlight.pug
+                include ../components/section-flashlight-product.pug
+                include ../components/home/section-up-footer.pug
             include ../components/footer.pug
             include ../components/popup.pug
         script(src="../js/dist/app.min.js") 
 
-        //- 1 48
+        //- 5 51

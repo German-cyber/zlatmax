@@ -88,12 +88,12 @@
 			position: absolute;
 			width: rem(19);
 			height: rem(19);
-			@include adaptiv-value('top', 8, 7);
 			right: rem(-33);
 			background-color: rgba($color: #fff, $alpha: 1);
 			display: inline-block;
 			mask: url('../../img-src/svg/arrow-white.svg') no-repeat;
 			mask-size: contain;
+			@include adaptiv-value('top', 8, 7);
 			@include small-mobile {
 				right: 8px;
 				top: 50%;

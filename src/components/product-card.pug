@@ -1,0 +1,64 @@
+mixin product-card(name, size, material, ratingValue, review, price, img)
+    article.product-card
+        .product-card__img-link.swiper(data-mousemove-swiper)
+            .swiper-wrapper
+                .swiper-slide.product-card__slide(data-swiper-parallax="-400")
+                    picture 
+                        source(type="image/avif" srcset=`${img}1.avif`)
+                        source(type="image/webp" srcset=`${img}1.webp`)
+                        img(src=`${img}1.jpg`).product-card__img
+                .swiper-slide.product-card__slide(data-swiper-parallax="-400")
+                    picture 
+                        source(type="image/avif" srcset=`${img}2.avif`)
+                        source(type="image/webp" srcset=`${img}2.webp`)
+                        img(src=`${img}2.jpg`).product-card__img
+                .swiper-slide.product-card__slide(data-swiper-parallax="-400")
+                    picture 
+                        source(type="image/avif" srcset=`${img}3.avif`)
+                        source(type="image/webp" srcset=`${img}3.webp`)
+                        img(src=`${img}3.jpg`).product-card__img
+                .swiper-slide.product-card__slide(data-swiper-parallax="-400")
+                    picture 
+                        source(type="image/avif" srcset=`${img}4.avif`)
+                        source(type="image/webp" srcset=`${img}4.webp`)
+                        img(src=`${img}4.jpg`).product-card__img
+                .swiper-slide.product-card__slide(data-swiper-parallax="-400")
+                    picture 
+                        source(type="image/avif" srcset=`${img}5.avif`)
+                        source(type="image/webp" srcset=`${img}5.webp`)
+                        img(src=`${img}5.jpg`).product-card__img
+                .swiper-slide.product-card__slide(data-swiper-parallax="-400")
+                    picture 
+                        source(type="image/avif" srcset=`${img}6.avif`)
+                        source(type="image/webp" srcset=`${img}6.webp`)
+                        img(src=`${img}6.jpg`).product-card__img
+            <div class="product-card__pagination swiper-pagination"></div>
+            a(href="#").product-card__img-ref 
+        .product-card__body
+            h3.product-card__title.h3-title 
+                a(href="#").product-card__title-link= name
+            .product-card__info.info-product-card
+                .info-product-card__size= size
+                .info-product-card__materials= material
+            .info-product-card__rating.star-rating
+                <div class="rating" data-rating data-rating-set>
+                    <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                            <input type="radio" class="rating__item" value="1" name="rating">
+                            <input type="radio" class="rating__item" value="2" name="rating">
+                            <input type="radio" class="rating__item" value="3" name="rating">
+                            <input type="radio" class="rating__item" value="4" name="rating">
+                            <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                    </div>
+                    .rating__value= ratingValue
+                    .rating__review= review
+                </div>
+
+            .product-card__footer 
+                .product-card__price= price
+                a(href="#").product-card__compare 
+                a(href="#").product-card__favorite 
+            .product-card__btn-wrapp
+                button.product-card__btn.gold-btn #[span В корзину] 

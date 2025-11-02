@@ -1,0 +1,4 @@
+.product-slider{
+    @include adaptiv-value("padding-top", 50, 40);
+    @include adaptiv-value("padding-bottom", 120, 40);
+}

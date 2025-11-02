@@ -1,0 +1,328 @@
+.up-footer {
+	@include back-img-1x('@img/footer/footer-bg', cover, 'jpg');
+	background-color: rgba(20, 20, 20, 0.95);
+	background-blend-mode: overlay;
+	@include adaptiv-value('padding-top', 60, 40);
+	@include adaptiv-value('padding-bottom', 60, 40);
+}
+
+.up-footer__title {
+	text-align: center;
+	color: $color-gold;
+	@include adaptiv-value('margin-bottom', 30, 20);
+}
+
+.up-footer__text {
+	color: rgba(255, 255, 255, 1);
+	line-height: math.div(27, 18);
+}
+
+// footer================================================
+.footer {
+	background: rgba(20, 20, 20, 1);
+}
+
+.footer__inner {
+	@include adaptiv-value('padding-top', 65, 20);
+	@include adaptiv-value('padding-bottom', 50, 20);
+	@include small-tablet{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	@media (max-width: 530px) {
+		display: block;
+	}
+}
+.footer__floor {
+	margin: 0 rem(-15);
+	padding: 0 rem(15);
+}
+.floor-item {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(rem(290), 1fr));
+	gap: rem(40);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	padding: rem(35) 0;
+	@include small-tablet {
+		display: block;
+		border: none;
+		padding: 0;
+		flex: 1 1 50%;
+	}
+}
+
+.footer__spoiler {
+	@include small-mobile {
+		border-top: 1px solid rgba(255, 255, 255, 0.5);
+		&:last-child {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		}
+	}
+}
+
+.item-footer-spoiler {
+	padding: 0 rem(15);
+}
+.item-footer-spoiler__title {
+	color: white;
+	font-weight: 600;
+	margin-bottom: rem(30);
+	position: relative;
+	text-transform: uppercase;
+	&._spoller-active {
+		&::before {
+			transform: translateY(-24%) rotate(90deg);
+		}
+	}
+	@include small-tablet {
+		margin-bottom: rem(15);
+		font-size: rem(19);
+		&::before {
+			content: '';
+			width: rem(14);
+			height: rem(14);
+			display: block;
+			position: absolute;
+			right: rem(-25);
+			top: 50%;
+			transition: transform 0.3s;
+			transform: translateY(-52%);
+			background: url('@svg/arrow-white.svg') no-repeat;
+			background-size: contain;
+		}
+	}
+	@include small-mobile {
+		padding-top: rem(15);
+		&::before {
+			transform: translateY(3%);
+		}
+		&._spoller-active {
+			&::before {
+				transform: translateY(29%) rotate(90deg);
+			}
+		}
+	}
+}
+.item-footer-spoiler__body {
+	color: rgba(255, 255, 255, 0.8);
+}
+.item-footer-spoiler__nav {
+}
+.item-footer-spoiler__items {
+}
+.item-footer-spoiler__item {
+	&:not(:last-child) {
+		margin-bottom: rem(20);
+	}
+
+	@include small-tablet {
+		margin-bottom: rem(8) !important;
+	}
+}
+
+.item-footer-spoiler__item:has(.link-spoiler-icon) {
+	&:not(:last-child) {
+		margin-bottom: rem(15);
+	}
+}
+
+.item-footer-spoiler__link {
+}
+
+.link-spoiler-icon {
+	position: relative;
+	padding-left: rem(27);
+	&::before {
+		content: '';
+		position: absolute;
+		top: 3px;
+		left: 0;
+		display: block;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	&--phone {
+		&::before {
+			background-image: url('@svg/phone.svg');
+			width: rem(16);
+			height: rem(16);
+		}
+	}
+	&--time {
+		&::before {
+			background-image: url('@svg/time.svg');
+			top: 5px;
+			width: rem(16);
+			height: rem(16);
+		}
+	}
+	&--location {
+		&::before {
+			background-color: white;
+			display: inline-block;
+			mask: url('../../img-src/svg/location.svg') no-repeat;
+			mask-size: contain;
+			top: 3px;
+			width: rem(12);
+			height: rem(19);
+		}
+	}
+	&--mail {
+		&::before {
+			background-image: url('@svg/mail.svg');
+			top: 6px;
+			width: rem(16);
+			height: rem(13);
+		}
+	}
+}
+
+ul.footer-social {
+	display: flex;
+	gap: rem(22);
+	margin-top: rem(30);
+	@include small-tablet{
+		margin: rem(15) 0;
+	}
+}
+
+.footer-social__link{
+	display: block;
+	width: rem(40);
+	height: rem(40);
+	background-size: cover;
+	background-repeat: no-repeat;
+	&--fb{
+		background-image: url("@svg/fb.svg");
+	}
+	&--viber{
+		background-image: url("@svg/viber.svg");
+	}
+	&--tg{
+		background-image: url("@svg/tg.svg");
+	}
+	&--wh{
+		background-image: url("@svg/wh.svg");
+	}
+}
+
+
+p.item-footer-spoiler__item {
+	max-width: rem(330);
+	a {
+		color: $color-gold;
+	}
+	@include small-tablet{
+		max-width: none;
+	}
+}
+
+.item-footer-spoiler__title:has(+ .footer-subscription) {
+	margin-bottom: rem(15);
+}
+
+.footer-subscription__form {
+	display: flex;
+	margin: rem(26) 0 rem(22);
+	@include small-tablet{
+		margin: rem(15) 0;
+	}
+}
+.footer-subscription__input {
+	flex: 1 1 auto;
+	border-radius: 3px 0 0 3px;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid white;
+	padding: rem(11) rem(16);
+	color: white;
+}
+
+.footer-subscription__sub {
+	flex: 0 0 rem(50);
+	width: 100%;
+	background-color: $color-gold;
+	position: relative;
+	border-radius: 0 3px 3px 0;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 10px;
+		height: 15px;
+		background: url('@svg/arrow-white.svg') no-repeat;
+		background-size: contain;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.footer-subscription__checkbox {
+	color: rgba(255, 255, 255, 0.8);
+	font-size: rem(16);
+	font-weight: 500;
+	line-height: math.div(22, 16);
+	cursor: pointer;
+	padding-bottom: rem(18);
+	&.checkbox-label {
+		display: block;
+		margin-left: 35px;
+	}
+	.checkbox {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		/* отвечает за отступы между текстом и checkbox */
+		padding-left: 20px;
+	}
+
+	/* стили checkbox */
+	.check-style {
+		position: absolute;
+		width: rem(16);
+		height: rem(16);
+		border-radius: 2px;
+		border: 2px solid rgba(255, 255, 255, 1);
+		/* отвечает за отступы между текстом и checkbox */
+		margin-left: -35px;
+		margin-top: 3px;
+	}
+
+	.checkbox:checked + .check-style::before {
+		content: '';
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		background-color: $color-gold;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+
+.copyright-footer{
+	color: rgba(255, 255, 255, 0.8);
+	font-size: rem(14);
+	line-height: math.div(22, 14);
+	display: flex;
+	align-items: center;
+	gap: rem(30);
+	margin-top: rem(30);
+	@include small-tablet{
+		display: block;
+	}
+}
+
+.copyright-footer__left{
+	flex: 0 1 calc(800 / 1600 * 100%);
+	@include small-tablet{
+		margin-bottom: rem(20);
+	}
+}
+
+.copyright-footer__right{
+	margin-left: auto;
+}

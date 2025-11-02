@@ -16,3 +16,8 @@
 	  }
 	}
 }
+
+// падинги для секция
+.padding-section{
+	@include adaptiv-value("padding-top", 100, 40);
+}

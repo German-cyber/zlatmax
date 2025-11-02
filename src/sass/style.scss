@@ -7,17 +7,16 @@
 // @import "../css/library/swiper.min";
 @import "../../node_modules/swiper/swiper-bundle";
 
-@import "../../node_modules/tippy.js/dist/tippy";
-
 
 @import "./abstacts/_mixin";
 @import "./abstacts/_variable";
 @import "./abstacts/media";
 
-@import './base/typography';
-@import './base/utilities';
+@import './base/typography'; 
+@import './base/section';
 
 @import "./libries/_library-class";
+@import "./blocks/star-rating";
 //@import "fonts"
 
 
@@ -118,6 +117,8 @@ html, body{
   flex-grow: 1;
 }
 
+// оснвные стили
+
 body{
   font-family: "Montserrat", sans-serif;
   font-size: rem(18);
@@ -137,10 +138,32 @@ body{
   @include adaptiv-value('padding-left', 103, 15, 1800, 1620);
 }
 
-// общие стили
 
+
+// блокируем скрол про открытом бургере
+body:has(.burger.active){
+  overflow: hidden
+}
+
+// общие стили
 @import "./components/header";
 @import "./components/footer";
 
+// блок слайдера товара
+@import "./components/product-slider";
+// карточка товара
+@import "./components/product-card";
+// блог со статьями
+@import "./components/article-module";
+// слайдер фонариков
+@import "./components/section-flashlight-product";
 
+// главная страница
 @import "./components/home/hero";
+@import "./components/home/section-rubric";
+@import "./components/home/section-news";
+@import "./components/home/section-flashlight";
+
+
+// служебные классы (имеют максимальный приоритет)
+@import './base/utilities';

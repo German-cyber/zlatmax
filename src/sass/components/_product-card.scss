@@ -1,0 +1,140 @@
+.product-card {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s;
+	height: 100%;
+	background-color: white;
+	@media (hover: hover) {
+		&:hover {
+			box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.2);
+		}
+	}
+}
+
+.product-card__img-link {
+	max-width: 100%;
+	position: relative;
+}
+
+.product-card__img-ref {
+	&::before {
+		// через before растягиваем кликабельное
+		// пространство на всю карточку
+		position: absolute;
+        cursor: pointer;
+		inset: 0;
+		content: '';
+        z-index: 2;
+	}
+}
+
+.product-card__img {
+	max-height: rem(295);
+	width: 100%;
+	object-fit: cover;
+}
+
+.product-card__pagination{
+    .swiper-pagination-bullet {
+        background-color: $color-gold;
+    }
+}
+
+.product-card__body {
+	padding: rem(20);
+	padding-bottom: rem(30);
+	margin-top: auto;
+	background-color: white;
+}
+
+.product-card__info {
+	margin-bottom: rem(11);
+}
+
+.info-product-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: rem(10);
+	font-size: rem(16);
+	color: rgba(171, 171, 171, 1);
+}
+
+.info-product-card__materials {
+	font-weight: 600;
+	text-align: right;
+}
+
+.info-product-card__rating {
+	margin-bottom: rem(26);
+}
+
+.product-card__footer {
+	border-top: 1px solid rgba(20, 20, 20, 0.5);
+	padding-top: rem(20);
+	display: flex;
+	align-items: center;
+	gap: rem(15);
+}
+
+.product-card__price {
+	flex: 1 1 auto;
+	font-size: rem(20);
+	font-weight: 600;
+	line-height: math.div(34, 20);
+}
+
+.product-card__compare {
+	mask: url('@svg/compare.svg') no-repeat;
+}
+
+.product-card__favorite {
+	mask: url('@svg/favorite.svg') no-repeat;
+}
+
+.product-card__compare,
+.product-card__favorite {
+	width: rem(26);
+	height: rem(26);
+	background-color: black;
+	display: inline-block;
+	mask-size: contain;
+	transition: background-color 0.3s;
+	@media (hover: hover) {
+		&:hover {
+			background-color: $color-gold;
+		}
+	}
+}
+
+.product-card__btn-wrapp {
+	max-width: rem(335);
+	width: 100%;
+	margin-top: rem(25);
+	position: relative;
+	display: flex;
+	@media (max-width: 1220px){
+        max-width: none;
+    }
+}
+
+.product-card__btn {
+	font-weight: 600;
+	padding: rem(15);
+	flex-grow: 1;
+	text-align: center;
+	&::after {
+		content: '';
+		display: inline-block;
+		width: rem(22);
+		height: rem(22);
+		background: url('@svg/cart-white.svg') no-repeat;
+		background-size: contain;
+		position: relative;
+		top: rem(5);
+	}
+	span {
+		padding-right: rem(14);
+	}
+}

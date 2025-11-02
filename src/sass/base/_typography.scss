@@ -1,1 +1,39 @@
 // файл для стилей загодловков основного текста и так далее
+.h2-title{
+  color: rgba(20, 20, 20, 1);
+  font-size: rem(30);
+  font-weight: 700;
+  line-height: math.div(46, 30);
+  letter-spacing: 1px;
+}
+
+.h3-title{
+  font-size: rem(20);
+  font-weight: 600;
+  line-height: math.div(34, 20);
+}
+
+.undrline-title{
+    font-weight: 600;
+    line-height: math.div(34, 24);
+    @include fluid-text(24, 20);
+    a{
+        display: inline-block;
+        &::after{
+            content: "";
+            display: block;
+            margin-top: rem(12);
+            width: rem(70);
+            height: 2px;
+            background-color: $color-gold;
+            transition: width .3s ease;
+        }
+        @media (hover:hover) {
+          &:hover{
+              &::after{
+                width: 100%;
+              }
+          }
+        }
+    }
+}

@@ -1,28 +1,48 @@
 @use 'sass:math';
 
-@mixin back-img ($path, $size, $extens){
-    background-image:
-         image-set(
-            url("#{$path}.avif") type("image/avif") 1x,
-            url("#{$path}.webp") type("image/webp") 1x,
-            url("#{$path}.#{$extens}") 1x,
-            url("#{$path}-2x.avif") type("image/avif") 2x,
-            url("#{$path}-2x.webp") type("image/webp") 2x,
-            url("#{$path}-2x.#{$extens}") 2x);
-    background-size: $size;
-    background-repeat: no-repeat;
+@mixin back-img($path, $size, $extens) {
+	background-image: image-set(
+		url('#{$path}.avif') type('image/avif') 1x,
+		url('#{$path}.webp') type('image/webp') 1x,
+		url('#{$path}.#{$extens}') 1x,
+		url('#{$path}-2x.avif') type('image/avif') 2x,
+		url('#{$path}-2x.webp') type('image/webp') 2x,
+		url('#{$path}-2x.#{$extens}') 2x
+	);
+	background-size: $size;
+	background-repeat: no-repeat;
 }
-    
 
-@mixin back-img-1x ($path, $size, $extens){
-    background-image: 
-        image-set( 
-            url("#{$path}.avif") type("image/avif") 1x, 
-            url("#{$path}.webp") type("image/webp") 1x, 
-            url("#{$path}.#{$extens}") 1x);
-    background-size: $size;
+@mixin back-img-1x($path, $size, $extens) {
+	background-image: image-set(url('#{$path}.avif') type('image/avif') 1x, url('#{$path}.webp') type('image/webp') 1x, url('#{$path}.#{$extens}') 1x);
+	background-size: $size;
+	background-repeat: no-repeat;
 }
-   
+
+// плавное подчеркивание линии
+@mixin underlineHover($color) {
+	position: relative;
+	display: inline-block;
+	&::before {
+		position: absolute;
+		content: '';
+		left: 0;
+		bottom: 0;
+		display: block;
+		height: 1px;
+		background: $color;
+		width: 0;
+		transition: 0.3s;
+	}
+	@media (hover: hover) {
+		&:hover {
+			&::before {
+				width: 100%;
+			}
+		}
+	}
+}
+
 @function em($px, $current: 16) {
 	$result: math.div($px, $current) + em;
 	@return $result;
@@ -39,8 +59,8 @@ $maxContainerWidth: 1590;
 $minWidth: 320;
 $containerWidth: $maxContainerWidth + 30;
 
-// Адаптивное свойство (clamp) 
-// widthFrom - размер с которого начинаем 
+// Адаптивное свойство (clamp)
+// widthFrom - размер с которого начинаем
 // widthTo - до какого должно быть использованно
 @mixin adaptiv-value($property, $startSize, $minSize, $widthFrom: $maxContainerWidth, $widthTo: $minWidth, $keepSize: 0) {
 	@if ($startSize==0) {
@@ -68,13 +88,13 @@ $containerWidth: $maxContainerWidth + 30;
 	@if ($yIntersection==0) {
 		$yIntersection: 0.000001;
 	}
-	$flyValue: #{rem($yIntersection)}" + " #{$slope * 100}vw;
+	$flyValue: #{rem($yIntersection)}' + ' #{$slope * 100}vw;
 
 	// Получение значения свойства
-	$propertyValue: #{"clamp(" rem($minSize) "," $flyValue "," rem($startSize) ")"};
+	$propertyValue: #{'clamp(' rem($minSize) ',' $flyValue ',' rem($startSize) ')'};
 	// Если отрицательные значения
 	@if ($minSize > $startSize) {
-		$propertyValue: #{"clamp(" rem($startSize) "," $flyValue "," rem($minSize) ")"};
+		$propertyValue: #{'clamp(' rem($startSize) ',' $flyValue ',' rem($minSize) ')'};
 	}
 
 	// Устанавливаем значения по умолчанию
@@ -101,34 +121,89 @@ $containerWidth: $maxContainerWidth + 30;
 	}
 }
 
-
 @mixin fluid-text($max: 48, $min: 16) {
-  $maxViewportWidth: 1270;
-  $minViewportWidth: 360;
+	$maxViewportWidth: 1270;
+	$minViewportWidth: 360;
 
-  $maxSize: math.div($max, 16);
-  $minSize: math.div($min, 16);
-  $maxWidth: math.div($maxViewportWidth, 16);
-  $minWidth: math.div($minViewportWidth, 16);
+	$maxSize: math.div($max, 16);
+	$minSize: math.div($min, 16);
+	$maxWidth: math.div($maxViewportWidth, 16);
+	$minWidth: math.div($minViewportWidth, 16);
 
-  $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
-  $yAxisIntersection: -$minWidth * $slope + $minSize;
+	$slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+	$yAxisIntersection: -$minWidth * $slope + $minSize;
 
-  font-size: clamp(
-    #{$minSize * 16px},
-    #{$yAxisIntersection * 16px} + #{$slope * 100vw},
-    #{$maxSize * 16px}
-  );
+	font-size: clamp(#{$minSize * 16px}, #{$yAxisIntersection * 16px} + #{$slope * 100vw}, #{$maxSize * 16px});
 }
 // @include fluid-text(40, 28) - использование
 
-
 @function rem($pixel) {
-  @if math.is-unitless($pixel) {
-    @return math.div($pixel, 16) + rem;
-  } @else {
-    @error 'Не используйте единицы измерения при работе с функцией rem()! Передавайте аргументом только числа.';
-  }
+	@if math.is-unitless($pixel) {
+		@return math.div($pixel, 16) + rem;
+	} @else {
+		@error 'Не используйте единицы измерения при работе с функцией rem()! Передавайте аргументом только числа.';
+	}
 }
 
 // rem(250)
+
+// миксин точек на свайпере
+@mixin swiper-dotts($color) {
+	display: flex;
+	align-items: center;
+	gap: rem(5);
+	position: static;
+	padding: 10px 0;
+	width: auto !important;
+	.swiper-pagination-bullet {
+		width: rem(18);
+		height: 2px;
+		background-color: $color;
+		border-radius: 0;
+		opacity: 1;
+		position: relative;
+		transition: all 0.3s ease;
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			box-sizing: content-box;
+			padding: rem(12);
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			width: rem(10);
+			height: rem(10);
+			background-color: $color-gold;
+			top: 50%;
+			left: 0;
+			transform: translate(0, -50%);
+			border-radius: 50%;
+			opacity: 0;
+		}
+	}
+	.swiper-pagination-bullet-active {
+		background-color: $color-gold;
+		width: rem(30);
+		&::after {
+			content: '';
+			opacity: 1;
+			position: absolute;
+			width: rem(10);
+			height: rem(10);
+			background-color: $color-gold;
+			top: 50%;
+			left: 25px;
+			transform: translate(0, -50%);
+			// отвечает за скорость перемещения и равен значению delay
+			transition: left 3.5s linear;
+			border-radius: 50%;
+		}
+	}
+}

@@ -7,12 +7,14 @@
 
 .hero__slider {
 	display: grid;
-	grid-template-columns: 1fr percent(635, 1600);
+	@include min-large-tablet{
+		grid-template-columns: 1fr percent(635, 1600);
+	}
 }
 
 .slide-hero,.hero-media-swiper__slide {
 	opacity: 0 !important;
-	pointer-events: none;
+	pointer-events: none; 
 	&.swiper-slide-visible {
 		opacity: 1 !important;
 		pointer-events: auto;
@@ -20,9 +22,10 @@
 }
 .slide-hero .slide-hero__title {
 	line-height: math.div(46, 36);
-	@include fluid-text(36, 30);
+	font-size: rem(36);
+	@include adaptiv-value("font-size", 36, 28, 992, 320, 1);
 	color: white;
-	font-weight: 700;
+	font-weight: 700; 
 	span {
 		display: block;
 		margin-top: rem(15);
@@ -43,6 +46,10 @@
 	font-weight: 600;
 	line-height: math.div(32, 20);
 	padding: rem(15) rem(50);
+	@include small-mobile{
+		display: block;
+		text-align: center;
+	}
 }
 
 .media-hero {
@@ -58,17 +65,39 @@
 }
 
 .media-hero__img {
-	max-width: 85%;
+	max-width: rem(600);
 	position: relative;
+	object-fit: contain;
 	z-index: 2;
+	@media (max-width:1120px) {
+		aspect-ratio: 1;
+	}
+	@include min-large-tablet{
+		max-width: 85%;
+	}
 	&--2 {
-		max-width: 65%;
-		transform: translateX(rem(128));
+		@include min-large-tablet{
+			transform: translateX(rem(128));
+			max-width: 65%;
+		}
+		@include small-desktop-1200{
+			transform: translateX(5rem);
+		}
+		@include small-tablet{
+			transform: translateX(2rem);
+		}
 	}
 	&--3 {
-		max-width: 75%;
-		transform: translateX(rem(25));
+		@include min-large-tablet{
+			max-width: 75%;
+			transform: translateX(rem(25));
+		}
 	}
+	
+	@include small-tablet{
+		max-width: 25rem;
+	}
+	
 }
 
 picture:has(.media-hero__img) {
@@ -138,12 +167,18 @@ picture:has(.media-hero__img) {
 		top: 13%;
 		right: 21%;
 		left: auto;
+		@include small-mobile{
+			right: 14%;
+		}
 	}
 	&--3 {
 		top: auto;
 		right: 28%;
 		bottom: 21%;
 		left: auto;
+		@include small-mobile{
+			right: 14%;
+		}
 	}
 
 	@media (hover: hover) {
@@ -184,63 +219,7 @@ picture:has(.media-hero__img) {
 }
 
 .hero-swiper-pagination__bullet {
-	display: flex;
-	align-items: center;
-	gap: rem(5);
-	position: static;
-	padding: 10px 0;
-	width: auto !important;
-	.swiper-pagination-bullet {
-		width: rem(18);
-		height: 2px;
-		background-color: white;
-		border-radius: 0;
-		opacity: 1;
-		position: relative;
-		transition: all 0.3s ease;
-		&::before {
-			content: '';
-			display: block;
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			box-sizing: content-box;
-			padding: rem(12);
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-		}
-		&::after {
-			content: '';
-			position: absolute;
-			width: rem(10);
-			height: rem(10);
-			background-color: $color-gold;
-			top: 50%;
-			left: 0;
-			transform: translate(0, -50%);
-			border-radius: 50%;
-			opacity: 0;
-		}
-	}
-	.swiper-pagination-bullet-active {
-		background-color: $color-gold;
-		width: rem(30);
-		&::after {
-			content: '';
-			opacity: 1;
-			position: absolute;
-			width: rem(10);
-			height: rem(10);
-			background-color: $color-gold;
-			top: 50%;
-			left: 25px;
-			transform: translate(0, -50%);
-			// отвечает за скорость перемещения и равен значению delay
-			transition: left 3.5s linear;
-			border-radius: 50%;
-		}
-	}
+	@include swiper-dotts(white);
 }
 
 .hero-swiper-pagination__fraction {
@@ -275,8 +254,16 @@ body .hero__advantages{
 .advantages-hero{
     display: grid;
     grid-template-columns: repeat(4, auto);
-    gap: rem(10);
+    gap: rem(15);
     justify-content: space-between;
+	@include small-tablet{
+		grid-template-columns: repeat(2, 1fr);
+		gap: rem(20);
+	}
+	@include small-mobile{
+		grid-template-columns: 1fr;
+		row-gap: rem(40);
+	}
 }
 
 

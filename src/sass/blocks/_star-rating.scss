@@ -1,0 +1,82 @@
+$color-hover:rgb(230, 212, 110);
+$color-active: rgba(232, 170, 49, 1);
+$star-size: rem(25); // регулируем размер звездного рейтинга
+
+// второй способ js + дробные значения
+.rating{
+    display: flex;
+    align-items: flex-end;
+    font-size: $star-size;
+    line-height: .75;
+    transition: opacity .3s;
+    display: flex;
+    justify-content: space-between;
+    &.rating_sending{
+        opacity: .2;
+    }
+}
+
+[data-rating-set]{
+    .rating__active,
+    .rating__item{
+        cursor: pointer;
+    }
+}
+
+.rating__active{
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: all .2s;
+    backface-visibility: hidden;
+    &::before{
+        content: "★★★★★";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        color: $color-active;
+    }
+}
+
+.rating__body{
+    position: relative;
+    letter-spacing: rem(8);
+    &::before{
+        content: "★★★★★";
+        display: block;
+    }
+}
+
+.rating__items{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.rating__item{
+    flex: 0 0 20%;
+    height: 100%;
+    opacity: 0;
+    transition: all .2s;
+    backface-visibility: hidden;
+}
+
+.rating__value{
+    display: none;
+    font-size: 50%;
+    line-height: 1;
+    padding-left: rem(10);
+}
+
+.rating__review{
+    color: rgba(171, 171, 171, 1);
+    font-size: rem(16);
+}

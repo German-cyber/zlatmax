@@ -58,6 +58,30 @@
                 <div role="tooltip" id="tooltip-1"> текст тултипа</div>
             </div>
         -->
+
+        <!-- 
+            новый спойлер
+            //- data-one-spolers один открытый спойлер внутри блока (если их много)
+            //- data-spollers = "650,min" 
+            //- data-spollers-speed = "700" продолжительность анимации
+            //- data-spoller-close - закрытие из вне
+            <div data-spollers="650,min" data-one-spoller  class="spollers">
+                <div class="spollers__item">
+                    <button type="button"  data-spoller class="spollers__title">Заголовок спойлера</button>
+                    <div  class="spollers__body">Контент спойлера</div>
+                </div>
+                <div class="spollers__item">
+                    <button type="button"  data-spoller class="spollers__title">Заголовок спойлера</button>
+                    <div  class="spollers__body">Контент спойлера</div>
+                </div>
+            </div>
+            <div data-spollers  class="spollers" >
+                <div class="spollers__item">
+                    <button type="button" data-spoller data-spoller-close class="spollers__title">Заголовок спойлера</button>
+                    <div class="spollers__body">Контент спойлера</div>
+                </div>
+            </div>
+        -->
 		<script src="../js/dist/app.min.js"></script>
 	</body>
 </html>

@@ -1,11 +1,11 @@
 import { plagins } from "../modules/plugins.js";
 
 if(document.querySelector(".hero-main-page")){
+
     const swiper = new plagins.swiper('.hero-swiper', {
         slidesPerView: 1,
         spaceBetween: 20,
         effect: "fade",
-        allowTouchMove: false,
         parallax: true,
         autoplay: {
             delay: 3500,
@@ -14,6 +14,12 @@ if(document.querySelector(".hero-main-page")){
         pagination: {
             el: ".hero-swiper-pagination__bullet.swiper-pagination",
             clickable: true,
+        },
+
+        breakpoints:{
+            768:{
+                allowTouchMove: false, // запрет свайпов с 768px
+            }
         },
 
         on: {
@@ -34,14 +40,31 @@ if(document.querySelector(".hero-main-page")){
         slidesPerView: 1,
         spaceBetween: 20,
         effect: "fade",
+        // связываем пагинацию с кнопками слайдера swiper
         pagination: {
             el: ".hero-swiper-pagination__bullet.swiper-pagination",
             clickable: true,
         },
-        allowTouchMove: false,
-        // autoplay: {
-        //     delay: 3500,
-        //     disableOnInteraction: false,
-        // },
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
+        breakpoints:{
+            768:{
+                allowTouchMove: false,// запрет свайпов с 768px
+            }
+        },
+
     })
+
+    // функция переключения слайдеров при изменении активного индекса одного из
+    const swipeAllSliders = (index) => {
+        swiper.slideTo(index);
+        swiperMedia.slideTo(index);
+    }
+
+    //обработчики смены слайдов
+    swiper.on('slideChange', () => swipeAllSliders(swiper.activeIndex));
+    swiperMedia.on('slideChange', () => swipeAllSliders(swiperMedia.activeIndex));
+
 }

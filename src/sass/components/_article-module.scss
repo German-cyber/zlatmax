@@ -1,0 +1,66 @@
+.article-module {
+    @include adaptiv-value("padding-bottom", 120, 40);
+}
+
+.article-module__title {
+    margin-bottom: rem(30);
+}
+.article-module__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(290), 1fr));
+    gap: rem(30);
+}
+
+.article-item {
+    background-color: white;
+    box-shadow: $box-shadow;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: box-shadow .3s;
+    @media (hover:hover) {
+      &:hover{
+          box-shadow: $box-shadow-hover;
+      }
+    }
+}
+.article-item__img {
+    max-height: rem(200);
+    width: 100%;
+    object-fit: cover;
+}
+.article-item__body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;   
+    padding: rem(20) rem(25);
+}
+
+.article-item__title {
+    margin-bottom: rem(8);
+}
+.article-item__date {
+    color: rgba(171, 171, 171, 1);
+    font-family: Montserrat;
+    font-size: rem(16);
+    line-height: math.div(34, 16);
+}
+
+.article-item__link{
+    &::before{
+	   // через before растягиваем кликабельное
+	   // пространство на всю карточку
+        position: absolute;
+        inset: 0;
+        content: "";
+    }   
+    &:focus-visible{
+        // отключаем фокус на тексте ссылки
+        outline: none;
+    }
+    &:focus-visible::before{
+        // кастомный фокус на карточке
+        outline: 1px solid $color-gold;
+        outline-offset: -2px;
+    }
+}
